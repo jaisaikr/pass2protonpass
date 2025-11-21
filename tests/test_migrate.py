@@ -1,7 +1,9 @@
+"""Test module for the pass2protonpass migration tool."""
 from migrate import read_pass, process_pass, write_pass
 
 
 def main():
+    """Test function to verify migration functionality."""
     raw_content = read_pass("example-entry")
     if raw_content:
         print(f"Raw content: {raw_content}")
