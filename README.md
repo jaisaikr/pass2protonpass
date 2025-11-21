@@ -1,13 +1,26 @@
-# Proton Pass Migration Tool
+# pass2protonpass 🔒
 
-This Python script migrates password entries from the Unix `pass` password manager to a CSV format compatible with Proton Pass import.
+**Seamlessly migrate your passwords from Unix `pass` (password-store) to Proton Pass**
 
-## Features
+A lightweight Python migration tool that converts your existing `pass` password store into a Proton Pass compatible CSV format. Perfect for users switching from the Unix command-line password manager to Proton's secure password manager.
 
-- Extracts passwords from the Unix `pass` password store
-- Parses common fields: username, email, password, notes
-- Exports to Proton Pass compatible CSV format
-- Supports GPG agent passphrase preset to avoid interactive prompts
+## 🚀 Key Features
+
+- **✅ Complete Migration** - Extracts passwords, usernames, emails, and notes
+- **🔐 Secure Processing** - Uses GPG directly, no plaintext intermediate storage
+- **🖥️ Cross-Platform** - Works on macOS, Linux, and Windows (with WSL)
+- **⚡ Fast & Simple** - Single command migration of entire password store
+- **🎯 Proton Pass Ready** - Generates perfectly formatted CSV for direct import
+
+## 📊 What Gets Migrated
+
+| Field | Source | Proton Pass Column |
+|-------|--------|-------------------|
+| Password | First line of pass entry | `password` |
+| Username | `username:`, `user:`, `login:` lines | `username` |
+| Email | Lines containing `@` | `email` |
+| Notes | All other content | `note` |
+| Entry Name | Pass entry path | `name` |
 
 ## Prerequisites
 
