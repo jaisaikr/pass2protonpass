@@ -180,7 +180,7 @@ def write_pass(output_file: str, rows: List[PassContent]):
         print(f"Created output directory: {output_dir}")
 
     with open(expanded_output_file, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=headers)
+        writer = csv.DictWriter(f, fieldnames=PROTON_HEADERS)
         writer.writeheader()
         for r in rows:
             row_dict = asdict(r)
@@ -205,7 +205,7 @@ def setup_gpg_passphrase():
 def count_gpg_files(pass_store_path: str) -> int:
     """Count total GPG files in the pass store."""
     total_files = 0
-    for root, _, files in os.walk(pass_store_path):
+    for _, _, files in os.walk(pass_store_path):
         for file in files:
             if file.endswith(".gpg"):
                 total_files += 1
